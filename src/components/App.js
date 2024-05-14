@@ -1,7 +1,7 @@
 
 import React from "react";
 import './../styles/App.css';
-import { useState } from "react/cjs/react.production.min";
+import React, { useState } from "react";
 
 const App = () => {
   const [inputValue, setInputValue] = useState(""); 
@@ -11,11 +11,12 @@ const App = () => {
     setTasks([...tasks, inputValue]);
     setInputValue("");
   }
-  const DeleteBtn =(index)=>{
+  const deleteTask = (index) => {
     const newTasks = [...tasks];
     newTasks.splice(index, 1);
     setTasks(newTasks);
   }
+  
 
   return (
     <div>
@@ -28,7 +29,7 @@ const App = () => {
       <button onClick={createTask}>Add Todo</button>
       <ul>
         {tasks.map((task, index) => (
-          <li key={index}>{task}<button onClick={() => DeleteBtn(index)}>Delete</button></li>
+          <li key={index}>{task}<button onClick={() => deleteTask(index)}>Delete</button></li>
         ))}
       </ul>
     </div>
